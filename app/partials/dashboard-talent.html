@@ -1,0 +1,607 @@
+<div class="wrapper talent">
+	<div data-dinnaco-header></div>
+	<!-- header end -->
+	<div class="dashboard-container">
+		<div class="talent-dashboard-content dashboard-content container-fluid">
+			<div class="row">
+				<div class="view-sort-head">
+					<div class="row talent-row matches-row clearfix">
+						<div class="matches display-inline" data-ng-show="talentType === 'pending'">Pending</div>
+						<div class="matches display-inline" data-ng-show="talentType === 'matches'">Matches</div>
+						<div class="matches display-inline" data-ng-show="talentType === 'outstanding'">Outstanding</div>
+						<div class="matches display-inline" data-ng-show="talentType === 'available'">Available</div>
+						<!-- matches end -->
+						<div class="talent-btns filter-btns display-inline">
+							<a href="javascript:;" class="list-view-icon" 
+								data-ng-class="{active: layout === 'list'}" 
+								data-ng-click="layout = 'list';">
+							</a>
+							<a href="javascript:;" class="grid-view-icon"
+								data-ng-class="{active: layout === 'grid'}" 
+								data-ng-click="layout = 'grid';">
+							</a>
+							<span class="separater"></span>
+							<a href="javascript:;" class="export-icon" data-ng-click="go('export-preview')">
+							</a>
+						</div>
+						<!-- filter-btns end -->
+						<div class="talent-dropdown sort-display display-inline l-right">
+							<div class="service-dropdown display-inline">
+								<div data-dropdown-select="ddSelectOptionsService" data-dropdown-model="ddSelectSelectedService" data-dropdown-onchange="sortChange(selected)"></div>
+							</div>
+							<div class="sort-dropdown display-inline">
+								<span class="sort-by">Sort by </span>
+								<div data-dropdown-select="ddSelectOptionsSort" data-dropdown-model="ddSelectSelectedSort" data-dropdown-onchange="sortChange(selected)"></div>
+							</div>
+							<div class="display-dropdown display-inline">
+								<div data-dropdown-select="ddSelectOptionsDisplay" data-dropdown-model="ddSelectSelectedDisplay" data-dropdown-onchange="displayChange(selected)"></div>
+							</div>
+						</div>
+						<!-- sort-display end -->
+					</div>
+					<!-- matches-row end -->
+				</div>
+				<!-- view-sort-head end -->
+
+				<div class="talent-list-grid-view">
+					<div class="pending-tab" data-ng-show="talentType === 'pending'">
+						<div class="list-view" data-ng-show="layout == 'list'">
+							<div class="view-sort-table-container dinnaco-table">
+								<table>
+									<thead>
+										<tr>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'fullName'; sortReverse = !sortReverse">COUNSELOR</a>
+											</th>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'fullName'; sortReverse = !sortReverse">COUNSELEE</a>
+											</th>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'percent'; sortReverse = !sortReverse">OVERALL MATCHES</a>
+											</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-dir-paginate="match in talentData | orderBy:sortType:sortReverse | itemsPerPage: pageSize" data-pagination-id="pending-pagin">
+											<td>
+												<div class="name-pos">
+													<img class="user-pic" data-ng-src="{{match.counselorPicSrc}}" alt="user-pic" src="javascript:;">
+													<p class="full-name">{{match.counselorFullName}}</p>
+													<p class="position">{{match.counselorPosition}}</p>
+												</div>
+											</td>
+											<td>
+												<div class="name-pos">
+													<img class="user-pic" data-ng-src="{{match.counseleePicSrc}}" alt="user-pic" src="javascript:;">
+													<p class="full-name">{{match.counseleeFullName}}</p>
+													<p class="position">{{match.counseleePosition}}</p>
+												</div>
+											</td>
+
+											<td><p class="matches-percent">{{match.percent}}<span class="percent">%</span></p></td>
+											<td>
+												<a href="javascript:;" class="dinnaco-btn reject-btn profile-btn" data-ng-click="removeCounselee('talentData', match)">REJECT</a>
+												<a href="javascript:;" class="dinnaco-btn accept-btn profile-btn" data-ng-click="removeCounselee('talentData', match)">ACCEPT</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- table end -->
+							</div>
+							<!-- view-sort-table-container end -->
+						</div>
+						<!-- list-view end -->
+
+						<div class="gird-view" data-ng-show="layout == 'grid'">
+							<div class="gird-list-container dinnaco-grid">
+								<ul class="clearfix">
+									<li data-dir-paginate="match in talentData | orderBy:sortType:sortReverse | itemsPerPage: pageSize" pagination-id="" data-pagination-id="pending-pagin">
+										<div class="grid-card">
+											<p class="matches-percent">{{match.percent}}<span class="percent">%</span></p>
+											<div class="user-progress">
+												<div class="round-progress-bar">
+				                                    <div data-round-progress
+				                                        data-max="max"
+				                                        data-current="match.percent"
+				                                        data-color="url(#gradientColor1)"
+				                                        data-bgcolor="#dcdcdc"
+				                                        data-radius="45"
+				                                        data-stroke="5"
+				                                        data-semi="false"
+				                                        data-rounded="false"
+				                                        data-clockwise="true"
+				                                        data-responsive="false"
+				                                        data-duration="500"
+				                                        data-animation="linearEase"
+				                                        data-animation-delay="0">
+				                                        <svg>
+				                                            <linearGradient id="gradientColor1" x1="1" x2="0" y1="0" y2="1">
+				                                                <stop offset="5%"  stop-color="rgb(129,188,0)"/>
+				                                                <stop offset="95%" stop-color="rgb(60,138,46)"/>
+				                                            </linearGradient>
+				                                        </svg>
+				                                    </div>
+				                                </div>
+				                                <img class="user-pic" data-ng-src="{{match.counselorPicSrc}}" alt="user-pic" src="javascript:;">
+											</div>
+											<!--user-progress end-->
+											<p class="full-name">{{match.counselorFullName}}</p>
+											<p class="position">{{match.counselorPosition}}</p>
+											<a href="javascript:;" class="view-profile-btn counselor" data-ng-click="goProfileCounselor()">VIEW PROFILE</a>
+											<div class="counselee-progress">
+												<div class="user-progress">
+													<div class="round-progress-bar">
+					                                    <div data-round-progress
+					                                        data-max="max"
+					                                        data-current="match.percent"
+					                                        data-color="url(#gradientColor1)"
+					                                        data-bgcolor="#dcdcdc"
+					                                        data-radius="45"
+					                                        data-stroke="5"
+					                                        data-semi="false"
+					                                        data-rounded="false"
+					                                        data-clockwise="true"
+					                                        data-responsive="false"
+					                                        data-duration="500"
+					                                        data-animation="linearEase"
+					                                        data-animation-delay="0">
+					                                        <svg>
+					                                            <linearGradient id="gradientColor1" x1="1" x2="0" y1="0" y2="1">
+					                                                <stop offset="5%"  stop-color="rgb(129,188,0)"/>
+					                                                <stop offset="95%" stop-color="rgb(60,138,46)"/>
+					                                            </linearGradient>
+					                                        </svg>
+					                                    </div>
+					                                </div>
+					                                <img class="user-pic" data-ng-src="{{match.counseleePicSrc}}" alt="user-pic" src="javascript:;">
+												</div>
+												<!--user-progress end-->
+											</div>
+											<p class="full-name">{{match.counseleeFullName}}</p>
+											<p class="position">{{match.counseleePosition}}</p>
+											<a href="javascript:;" class="view-profile-btn" data-ng-click="goProfileCounselee()">VIEW PROFILE</a>
+											<div class="reject-accept-btns">
+												<a href="javascript:;" class="dinnaco-btn reject-btn profile-btn" data-ng-click="removeCounselee('talentData', match)">REJECT</a>
+												<a href="javascript:;" class="dinnaco-btn accept-btn profile-btn" data-ng-click="removeCounselee('talentData', match)">ACCEPT</a>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- gird-list-container end -->
+						</div>
+						<!-- gird-view end -->
+						<div class="clearfix">
+							<div class="l-right page-controls" data-ng-class="layout === 'grid' ? 'grid' : ''">
+								<div data-dir-pagination-controls data-direction-links="false" data-boundary-links="false" data-on-page-change="pageChangeHandler(newPageNumber)" data-template-url="partials/dirPagination.tpl.html" data-pagination-id="pending-pagin"></div>
+							</div>
+						</div>
+						<!-- page-controls end -->
+					</div>
+					<!-- pending-tab end -->
+
+					<div class="outstanding-tab" data-ng-show="talentType === 'outstanding'">
+						<div class="list-view" data-ng-show="layout == 'list'">
+							<div class="view-sort-table-container dinnaco-table">
+								<table>
+									<thead>
+										<tr>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'fullName'; sortReverse = !sortReverse">COUNSELOR</a>
+											</th>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'fullName'; sortReverse = !sortReverse">COUNSELEE</a>
+											</th>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'percent'; sortReverse = !sortReverse">OVERALL MATCHES</a>
+											</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-dir-paginate="match in talentOutstandingData | orderBy:sortType:sortReverse | itemsPerPage: pageSize" data-pagination-id="outstanding-pagin">
+											<td>
+												<div class="name-pos">
+													<img class="user-pic" data-ng-src="{{match.counselorPicSrc}}" alt="user-pic" src="javascript:;">
+													<p class="full-name">{{match.counselorFullName}}</p>
+													<p class="position">{{match.counselorPosition}}</p>
+												</div>
+											</td>
+											<td>
+												<div class="name-pos">
+													<img class="user-pic" data-ng-src="{{match.counseleePicSrc}}" alt="user-pic" src="javascript:;">
+													<p class="full-name">{{match.counseleeFullName}}</p>
+													<p class="position">{{match.counseleePosition}}</p>
+												</div>
+											</td>
+
+											<td><p class="matches-percent">{{match.percent}}<span class="percent">%</span></p></td>
+											<td>
+												<a href="javascript:;" class="dinnaco-btn reject-btn profile-btn" data-ng-click="removeCounselee('talentOutstandingData', match)">REJECT</a>
+												<a href="javascript:;" class="dinnaco-btn accept-btn profile-btn" data-ng-click="removeCounselee('talentOutstandingData', match)">ACCEPT</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- table end -->
+							</div>
+							<!-- view-sort-table-container end -->
+						</div>
+						<!-- list-view end -->
+
+						<div class="gird-view" data-ng-show="layout == 'grid'">
+							<div class="gird-list-container dinnaco-grid">
+								<ul class="clearfix">
+									<li data-dir-paginate="match in talentOutstandingData | orderBy:sortType:sortReverse | itemsPerPage: pageSize" data-pagination-id="outstanding-pagin">
+										<div class="grid-card">
+											<p class="matches-percent">{{match.percent}}<span class="percent">%</span></p>
+											<div class="user-progress">
+												<div class="round-progress-bar">
+				                                    <div data-round-progress
+				                                        data-max="max"
+				                                        data-current="match.percent"
+				                                        data-color="url(#gradientColor1)"
+				                                        data-bgcolor="#dcdcdc"
+				                                        data-radius="45"
+				                                        data-stroke="5"
+				                                        data-semi="false"
+				                                        data-rounded="false"
+				                                        data-clockwise="true"
+				                                        data-responsive="false"
+				                                        data-duration="500"
+				                                        data-animation="linearEase"
+				                                        data-animation-delay="0">
+				                                        <svg>
+				                                            <linearGradient id="gradientColor1" x1="1" x2="0" y1="0" y2="1">
+				                                                <stop offset="5%"  stop-color="rgb(129,188,0)"/>
+				                                                <stop offset="95%" stop-color="rgb(60,138,46)"/>
+				                                            </linearGradient>
+				                                        </svg>
+				                                    </div>
+				                                </div>
+				                                <img class="user-pic" data-ng-src="{{match.counselorPicSrc}}" alt="user-pic" src="javascript:;">
+											</div>
+											<!--user-progress end-->
+											<p class="full-name">{{match.counselorFullName}}</p>
+											<p class="position">{{match.counselorPosition}}</p>
+											<a href="javascript:;" class="view-profile-btn counselor" data-ng-click="goProfileCounselor()">VIEW PROFILE</a>
+											<div class="counselee-progress">
+												<div class="user-progress">
+													<div class="round-progress-bar">
+					                                    <div data-round-progress
+					                                        data-max="max"
+					                                        data-current="match.percent"
+					                                        data-color="url(#gradientColor1)"
+					                                        data-bgcolor="#dcdcdc"
+					                                        data-radius="45"
+					                                        data-stroke="5"
+					                                        data-semi="false"
+					                                        data-rounded="false"
+					                                        data-clockwise="true"
+					                                        data-responsive="false"
+					                                        data-duration="500"
+					                                        data-animation="linearEase"
+					                                        data-animation-delay="0">
+					                                        <svg>
+					                                            <linearGradient id="gradientColor1" x1="1" x2="0" y1="0" y2="1">
+					                                                <stop offset="5%"  stop-color="rgb(129,188,0)"/>
+					                                                <stop offset="95%" stop-color="rgb(60,138,46)"/>
+					                                            </linearGradient>
+					                                        </svg>
+					                                    </div>
+					                                </div>
+					                                <img class="user-pic" data-ng-src="{{match.counseleePicSrc}}" alt="user-pic" src="javascript:;">
+												</div>
+												<!--user-progress end-->
+											</div>
+											<p class="full-name">{{match.counseleeFullName}}</p>
+											<p class="position">{{match.counseleePosition}}</p>
+											<a href="javascript:;" class="view-profile-btn" data-ng-click="goProfileCounselee()">VIEW PROFILE</a>
+											<div class="reject-accept-btns">
+												<a href="javascript:;" class="dinnaco-btn reject-btn profile-btn" data-ng-click="removeCounselee('talentOutstandingData', match)">REJECT</a>
+												<a href="javascript:;" class="dinnaco-btn accept-btn profile-btn" data-ng-click="removeCounselee('talentOutstandingData', match)">ACCEPT</a>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- gird-list-container end -->
+						</div>
+						<!-- gird-view end -->
+						<div class="clearfix">
+							<div class="l-right page-controls" data-ng-class="layout === 'grid' ? 'grid' : ''">
+								<div data-dir-pagination-controls data-direction-links="false" data-boundary-links="false" data-on-page-change="pageChangeHandler(newPageNumber)" data-template-url="partials/dirPagination.tpl.html" data-pagination-id="outstanding-pagin"></div>
+							</div>
+						</div>
+						<!-- page-controls end -->
+					</div>
+					<!-- outstanding-tab end -->
+
+					<div class="available-tab" data-ng-show="talentType === 'available'">
+						<div class="list-view" data-ng-show="layout == 'list'">
+							<div class="view-sort-table-container dinnaco-table">
+								<table>
+									<thead>
+										<tr>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'fullName'; sortReverse = !sortReverse">COUNSELOR</a>
+											</th>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'fullName'; sortReverse = !sortReverse">COUNSELEE</a>
+											</th>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'percent'; sortReverse = !sortReverse">OVERALL MATCHES</a>
+											</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-dir-paginate="match in talentAvailableData | orderBy:sortType:sortReverse | itemsPerPage: pageSize" data-pagination-id="available-pagin">
+											<td>
+												<div class="name-pos">
+													<img class="user-pic" data-ng-src="{{match.counselorPicSrc}}" alt="user-pic" src="javascript:;">
+													<p class="full-name">{{match.counselorFullName}}</p>
+													<p class="position">{{match.counselorPosition}}</p>
+												</div>
+											</td>
+											<td>
+												<div class="name-pos">
+													<img class="user-pic" data-ng-src="{{match.counseleePicSrc}}" alt="user-pic" src="javascript:;">
+													<p class="full-name">{{match.counseleeFullName}}</p>
+													<p class="position">{{match.counseleePosition}}</p>
+												</div>
+											</td>
+
+											<td><p class="matches-percent">{{match.percent}}<span class="percent">%</span></p></td>
+											<td>
+												<a href="javascript:;" class="dinnaco-btn reject-btn profile-btn" data-ng-click="removeCounselee('talentAvailableData', match)">REJECT</a>
+												<a href="javascript:;" class="dinnaco-btn accept-btn profile-btn" data-ng-click="removeCounselee('talentAvailableData', match)">ACCEPT</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- table end -->
+							</div>
+							<!-- view-sort-table-container end -->
+						</div>
+						<!-- list-view end -->
+
+						<div class="gird-view" data-ng-show="layout == 'grid'">
+							<div class="gird-list-container dinnaco-grid">
+								<ul class="clearfix">
+									<li data-dir-paginate="match in talentAvailableData | orderBy:sortType:sortReverse | itemsPerPage: pageSize" data-pagination-id="available-pagin">
+										<div class="grid-card">
+											<p class="matches-percent">{{match.percent}}<span class="percent">%</span></p>
+											<div class="user-progress">
+												<div class="round-progress-bar">
+				                                    <div data-round-progress
+				                                        data-max="max"
+				                                        data-current="match.percent"
+				                                        data-color="url(#gradientColor1)"
+				                                        data-bgcolor="#dcdcdc"
+				                                        data-radius="45"
+				                                        data-stroke="5"
+				                                        data-semi="false"
+				                                        data-rounded="false"
+				                                        data-clockwise="true"
+				                                        data-responsive="false"
+				                                        data-duration="500"
+				                                        data-animation="linearEase"
+				                                        data-animation-delay="0">
+				                                        <svg>
+				                                            <linearGradient id="gradientColor1" x1="1" x2="0" y1="0" y2="1">
+				                                                <stop offset="5%"  stop-color="rgb(129,188,0)"/>
+				                                                <stop offset="95%" stop-color="rgb(60,138,46)"/>
+				                                            </linearGradient>
+				                                        </svg>
+				                                    </div>
+				                                </div>
+				                                <img class="user-pic" data-ng-src="{{match.counselorPicSrc}}" alt="user-pic" src="javascript:;">
+											</div>
+											<!--user-progress end-->
+											<p class="full-name">{{match.counselorFullName}}</p>
+											<p class="position">{{match.counselorPosition}}</p>
+											<a href="javascript:;" class="view-profile-btn counselor" data-ng-click="goProfileCounselor()">VIEW PROFILE</a>
+											<div class="counselee-progress">
+												<div class="user-progress">
+													<div class="round-progress-bar">
+					                                    <div data-round-progress
+					                                        data-max="max"
+					                                        data-current="match.percent"
+					                                        data-color="url(#gradientColor1)"
+					                                        data-bgcolor="#dcdcdc"
+					                                        data-radius="45"
+					                                        data-stroke="5"
+					                                        data-semi="false"
+					                                        data-rounded="false"
+					                                        data-clockwise="true"
+					                                        data-responsive="false"
+					                                        data-duration="500"
+					                                        data-animation="linearEase"
+					                                        data-animation-delay="0">
+					                                        <svg>
+					                                            <linearGradient id="gradientColor1" x1="1" x2="0" y1="0" y2="1">
+					                                                <stop offset="5%"  stop-color="rgb(129,188,0)"/>
+					                                                <stop offset="95%" stop-color="rgb(60,138,46)"/>
+					                                            </linearGradient>
+					                                        </svg>
+					                                    </div>
+					                                </div>
+					                                <img class="user-pic" data-ng-src="{{match.counseleePicSrc}}" alt="user-pic" src="javascript:;">
+												</div>
+												<!--user-progress end-->
+											</div>
+											<p class="full-name">{{match.counseleeFullName}}</p>
+											<p class="position">{{match.counseleePosition}}</p>
+											<a href="javascript:;" class="view-profile-btn" data-ng-click="goProfileCounselee()">VIEW PROFILE</a>
+											<div class="reject-accept-btns">
+												<a href="javascript:;" class="dinnaco-btn reject-btn profile-btn" data-ng-click="removeCounselee('talentAvailableData', match)">REJECT</a>
+												<a href="javascript:;" class="dinnaco-btn accept-btn profile-btn" data-ng-click="removeCounselee('talentAvailableData',  match)">ACCEPT</a>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- gird-list-container end -->
+						</div>
+						<!-- gird-view end -->
+						<div class="clearfix">
+							<div class="l-right page-controls" data-ng-class="layout === 'grid' ? 'grid' : ''">
+								<div data-dir-pagination-controls data-direction-links="false" data-boundary-links="false" data-on-page-change="pageChangeHandler(newPageNumber)" data-template-url="partials/dirPagination.tpl.html" data-pagination-id="available-pagin"></div>
+							</div>
+						</div>
+						<!-- page-controls end -->
+					</div>
+					<!-- available-tab end -->
+
+					<div class="matches-tab" data-ng-show="talentType === 'matches'">
+						<div class="list-view" data-ng-show="layout == 'list'">
+							<div class="view-sort-table-container dinnaco-table">
+								<table>
+									<thead>
+										<tr>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'fullName'; sortReverse = !sortReverse">COUNSELOR</a>
+											</th>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'fullName'; sortReverse = !sortReverse">COUNSELEE</a>
+											</th>
+											<th>
+												<a href="javascript:;" data-ng-click="sortType = 'percent'; sortReverse = !sortReverse">OVERALL MATCHES</a>
+											</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-dir-paginate="match in talentMatchesData | orderBy:sortType:sortReverse | itemsPerPage: pageSize" data-pagination-id="matches-pagin">
+											<td>
+												<div class="name-pos">
+													<img class="user-pic" data-ng-src="{{match.counselorPicSrc}}" alt="user-pic" src="javascript:;">
+													<p class="full-name">{{match.counselorFullName}}</p>
+													<p class="position">{{match.counselorPosition}}</p>
+												</div>
+											</td>
+											<td>
+												<div class="name-pos">
+													<img class="user-pic" data-ng-src="{{match.counseleePicSrc}}" alt="user-pic" src="javascript:;">
+													<p class="full-name">{{match.counseleeFullName}}</p>
+													<p class="position">{{match.counseleePosition}}</p>
+												</div>
+											</td>
+
+											<td><p class="matches-percent">{{match.percent}}<span class="percent">%</span></p></td>
+											<td>
+												<a href="javascript:;" class="dinnaco-btn reject-btn profile-btn" data-ng-click="removeCounselee('talentMatchesData', match)">REJECT</a>
+												<a href="javascript:;" class="dinnaco-btn accept-btn profile-btn" data-ng-click="removeCounselee('talentMatchesData', match)">ACCEPT</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- table end -->
+							</div>
+							<!-- view-sort-table-container end -->
+						</div>
+						<!-- list-view end -->
+
+						<div class="gird-view" data-ng-show="layout == 'grid'">
+							<div class="gird-list-container dinnaco-grid">
+								<ul class="clearfix">
+									<li data-dir-paginate="match in talentMatchesData | orderBy:sortType:sortReverse | itemsPerPage: pageSize" data-pagination-id="matches-pagin">
+										<div class="grid-card">
+											<p class="matches-percent">{{match.percent}}<span class="percent">%</span></p>
+											<div class="user-progress">
+												<div class="round-progress-bar">
+				                                    <div data-round-progress
+				                                        data-max="max"
+				                                        data-current="match.percent"
+				                                        data-color="url(#gradientColor1)"
+				                                        data-bgcolor="#dcdcdc"
+				                                        data-radius="45"
+				                                        data-stroke="5"
+				                                        data-semi="false"
+				                                        data-rounded="false"
+				                                        data-clockwise="true"
+				                                        data-responsive="false"
+				                                        data-duration="500"
+				                                        data-animation="linearEase"
+				                                        data-animation-delay="0">
+				                                        <svg>
+				                                            <linearGradient id="gradientColor1" x1="1" x2="0" y1="0" y2="1">
+				                                                <stop offset="5%"  stop-color="rgb(129,188,0)"/>
+				                                                <stop offset="95%" stop-color="rgb(60,138,46)"/>
+				                                            </linearGradient>
+				                                        </svg>
+				                                    </div>
+				                                </div>
+				                                <img class="user-pic" data-ng-src="{{match.counselorPicSrc}}" alt="user-pic" src="javascript:;">
+											</div>
+											<!--user-progress end-->
+											<p class="full-name">{{match.counselorFullName}}</p>
+											<p class="position">{{match.counselorPosition}}</p>
+											<a href="javascript:;" class="view-profile-btn counselor" data-ng-click="goProfileCounselor()">VIEW PROFILE</a>
+											<div class="counselee-progress">
+												<div class="user-progress">
+													<div class="round-progress-bar">
+					                                    <div data-round-progress
+					                                        data-max="max"
+					                                        data-current="match.percent"
+					                                        data-color="url(#gradientColor1)"
+					                                        data-bgcolor="#dcdcdc"
+					                                        data-radius="45"
+					                                        data-stroke="5"
+					                                        data-semi="false"
+					                                        data-rounded="false"
+					                                        data-clockwise="true"
+					                                        data-responsive="false"
+					                                        data-duration="500"
+					                                        data-animation="linearEase"
+					                                        data-animation-delay="0">
+					                                        <svg>
+					                                            <linearGradient id="gradientColor1" x1="1" x2="0" y1="0" y2="1">
+					                                                <stop offset="5%"  stop-color="rgb(129,188,0)"/>
+					                                                <stop offset="95%" stop-color="rgb(60,138,46)"/>
+					                                            </linearGradient>
+					                                        </svg>
+					                                    </div>
+					                                </div>
+					                                <img class="user-pic" data-ng-src="{{match.counseleePicSrc}}" alt="user-pic" src="javascript:;">
+												</div>
+												<!--user-progress end-->
+											</div>
+											<p class="full-name">{{match.counseleeFullName}}</p>
+											<p class="position">{{match.counseleePosition}}</p>
+											<a href="javascript:;" class="view-profile-btn" data-ng-click="goProfileCounselee()">VIEW PROFILE</a>
+											<div class="reject-accept-btns">
+												<a href="javascript:;" class="dinnaco-btn reject-btn profile-btn" data-ng-click="removeCounselee('talentMatchesData', match)">REJECT</a>
+												<a href="javascript:;" class="dinnaco-btn accept-btn profile-btn" data-ng-click="removeCounselee('talentMatchesData', match)">ACCEPT</a>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- gird-list-container end -->
+						</div>
+						<!-- gird-view end -->
+						<div class="clearfix">
+							<div class="l-right page-controls" data-ng-class="layout === 'grid' ? 'grid' : ''">
+								<div data-dir-pagination-controls data-direction-links="false" data-boundary-links="false" data-on-page-change="pageChangeHandler(newPageNumber)" data-template-url="partials/dirPagination.tpl.html" data-pagination-id="matches-pagin"></div>
+							</div>
+						</div>
+						<!-- page-controls end -->
+					</div>
+					<!-- matches-tab end -->
+					
+				</div>
+				<!-- talent-dashboard-content end -->
+			</div>
+			<!-- row end -->
+		</div>
+		<!-- left-side-col end -->
+	</div>
+	<!-- dashboard-container end -->
+</div>
+<!-- wrapper end -->
+
+
+

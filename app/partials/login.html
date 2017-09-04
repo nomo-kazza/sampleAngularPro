@@ -1,0 +1,31 @@
+<div class="wrapper">
+	<div class="login-bg">
+		<div class="login-container">
+			<div class="logo"><img src="i/logo.png" alt="dinnaco logo"></div>
+			<div class="counsel-match">
+				<p class="title">Counseling Matching</p>
+				<p class="content">Welcome to Couseling Matching Application</p>
+				<p class="content">lorem ipsum dolor sit met consectetor amet elite adipising</p>
+				<div class="msg-icon"></div>
+			</div>
+			<!--counsel-match-->
+
+			<div class="slider-container">
+				<div data-slick data-dots="true" data-infinite="false" data-speed="300" data-slides-to-show="1" data-slides-to-scroll="1" data-arrows="false" data-init-onload="true" data-data="slidesData">
+				  	<div class="dinnaco-slider" data-ng-repeat="slider in slidesData track by $index">
+				  		<p class="title">{{slider.title}}</p>
+				  		<p class="content">{{slider.description}}</p>
+				  	</div>
+				</div>
+			</div>
+			<!--slider-container-->
+
+			<a href="javascript:;" class="login-btn dinnaco-btn" data-ng-click="showLoginModal = true;">SIGN IN</a>
+		</div>
+		<!--login-container-->
+	</div>
+	<!--login-bg-->
+	<div data-login-modal data-ng-show="showLoginModal"></div>
+	<div class="bg-overlay" data-ng-show="showLoginModal" data-ng-click="showLoginModal = false"></div>
+</div>
+<!--wrapper-->

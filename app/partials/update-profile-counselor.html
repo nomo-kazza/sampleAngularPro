@@ -1,0 +1,211 @@
+
+<div class="wrapper">
+	<div data-dinnaco-header></div>
+	<!-- header end -->
+	<div class="update-profile-container dashboard-container">
+		<div class="update-profile-content dashboard-content container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 left-side-col" data-scroll-sidebar>
+					<div class="left-side-bg">
+						<div class="user-info">
+							<div class="user-pic"><img src="i/user-pics/user_pic_19.jpg" alt="user pic"></div>
+							<a href="javascript:;" class="change-photo">Change Photo</a>
+							<p class="name">Jackblack Longnamous</p>
+							<p class="job-position">
+								Managing Director 
+								<span>Dinnaco, NYC</span>
+							</p>
+						</div>
+						<!-- user-info end -->
+					</div>
+					<!-- left-side-bg end -->
+				</div>
+				<!-- left-side-col end -->
+				<div class="col-sm-9 col-md-9 col-lg-9 right-side-col update-profile-col">
+					<div class="row">
+						<div class="col-sm-6 col-md-6 col-lg-6 personal-info-col">
+							<div class="personal-info">
+								<h4>Personal Information</h4>
+								<div class="row">
+									<label>Full Name</label>
+									<p data-ng-hide="enableEdit">{{fullNameLor}}</p>
+									<input type="text" data-ng-model="fullNameLor" data-ng-show="enableEdit">
+								</div>
+								<!--full name row end-->
+								<div class="row">
+									<div class="col-sm-6 col-md-6 col-lg-6">
+										<div class="level">
+											<label>Level</label>
+											<p data-ng-hide="enableEdit">{{levelLor}}</p>
+											<input type="text" data-ng-model="levelLor" data-ng-show="enableEdit">
+										</div>
+									</div>
+									<div class="col-sm-6 col-md-6 col-lg-6 right-col ">
+										<div class="fun-services">
+											<label>Functions & Services</label>
+											<p data-ng-hide="enableEdit">{{serviceLor}}</p>
+											<input type="text" data-ng-model="serviceLor" data-ng-show="enableEdit">
+										</div>
+									</div>
+								</div>
+								<!--level and services row end-->
+								<div class="row">
+									<div class="col-sm-6 col-md-6 col-lg-6">
+										<div class="primary-indstry">
+											<label>Primary Industry</label>
+											<p data-ng-hide="enableEdit">{{ddSelectSelectedPrim.text}}</p>
+											<div data-ng-show="enableEdit">
+												<div data-dropdown-select="ddSelectOptionsPrim" data-dropdown-model="ddSelectSelectedPrim" data-dropdown-onchange="industryChange(selected)"></div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6 col-md-6 col-lg-6 right-col">
+										<div class="secondary-indstry">
+											<label>Secondary Industry</label>
+											<p data-ng-hide="enableEdit">{{ddSelectSelectedSec.text}}</p>
+											<div data-ng-show="enableEdit">
+												<div data-dropdown-select="ddSelectOptionsSec" data-dropdown-model="ddSelectSelectedSec"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--industry row end-->
+								<div class="row">
+									<div class="col-sm-6 col-md-6 col-lg-6">
+										<div class="office">
+											<label>Office</label>
+											<p data-ng-hide="enableEdit">{{officeLor}}</p>
+											<input type="text" data-ng-model="officeLor" data-ng-show="enableEdit">
+										</div>
+									</div>
+									<div class="col-sm-6 col-md-6 col-lg-6 right-col">
+										<div class="tenure">
+											<label>Current Tenure</label>
+											<p data-ng-hide="enableEdit">{{tenureLor}}</p>
+											<input type="text" data-ng-model="tenureLor" data-ng-show="enableEdit">
+										</div>
+									</div>
+								</div>
+								<!--office and tenure row end-->
+								<div class="row">
+									<div class="col-sm-6 col-md-6 col-lg-6">
+										<div class="email">
+											<label>Email</label>
+											<p data-ng-hide="enableEdit"><a href="javascript:;">{{emailLor}}</a></p>
+											<input type="text" data-ng-model="emailLor" data-ng-show="enableEdit">
+										</div>
+									</div>
+									<div class="col-sm-6 col-md-6 col-lg-6 right-col">
+										<div class="phone">
+											<label>Mobile Phone</label>
+											<p data-ng-hide="enableEdit"><a href="tel:1-847-555-5555">{{phoneLor}}</a></p>
+											<input type="text" data-ng-model="phoneLor" data-ng-show="enableEdit">
+										</div>
+									</div>
+								</div>
+								<!--email and phone row end-->
+								<div class="row">
+									<div class="col-sm-6 col-md-6 col-lg-6">
+										<div class="project">
+											<label>Current Project</label>
+											<p data-ng-hide="enableEdit">{{projectLor}}</p>
+											<input type="text" data-ng-model="projectLor" data-ng-show="enableEdit">
+										</div>
+									</div>
+									<div class="col-sm-6 col-md-6 col-lg-6 right-col">
+										<div class="languages">
+											<label>Languages</label>
+											<p data-ng-hide="enableEdit">{{languagesLor}}</p>
+											<input type="text" data-ng-model="languagesLor" data-ng-show="enableEdit">
+										</div>
+									</div>
+								</div>
+								<!--project and languages row end-->
+								<div class="row">
+									<div class="hometown">
+										<label>Hometown</label>
+										<p data-ng-hide="enableEdit">{{hometownLor}}</p>
+										<input type="text" data-ng-model="hometownLor" data-ng-show="enableEdit">
+									</div>
+								</div>
+								<!--Hometown row end-->
+								<div class="row">
+									<div class="hobbies">
+										<label>Interests & Hobbies</label>
+										<p data-ng-hide="enableEdit">{{selectedHobbies}}</p>
+										<div class="multi-dropdown-container" data-ng-show="enableEdit">
+											<div class="dropdown-select" data-ng-click="displayMenu = !displayMenu">
+												<span>{{selectedHobbies}}</span><span class="arrow-blue-icon"></span>
+											</div>
+											<div class="dropdown-list" 
+											data-ng-show="displayMenu"
+											data-click-outside="displayMenu = false" 
+											data-outside-if-not="dropdown-select,arrow-blue-icon,item,check-mark">
+												<ul>
+													<li data-ng-repeat="hobby in hobbiesData track by $index">
+
+														<a href="javascript:;" class="item" 
+														data-selected-item="{{$index}}"
+														data-ng-class="selected ? 'selected' : ''">
+														<span class="check-mark"></span>{{hobby.hobby}}</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--hobbies row end-->
+								<div class="row counselee-num">
+									<label>Current number of Counselees</label>
+									<p data-ng-hide="enableEdit">{{counseleeNum}}</p>
+									<input type="text" data-ng-model="counseleeNum" data-ng-show="enableEdit">
+								</div>
+								<!--Current number of Counselees row end-->
+								<div class="row" data-ng-hide="hideEditProfileBtn">
+									<a href="javascript:;" class="dinnaco-btn edit-btn" 
+									data-ng-click="enableEdit = true"
+									data-ng-hide="enableEdit">EDIT INFO</a>
+									<a href="javascript:;" class="dinnaco-btn edit-btn" 
+									data-ng-click="enableEdit = false"
+									data-ng-show="enableEdit">SAVE</a>
+								</div>
+							</div>
+							<!-- personal-info end -->
+						</div>
+						<div class="col-sm-6 col-md-6 col-lg-6 counseling-col">
+							<div class="counseling-form">
+								<h4>Counseling</h4>
+								<div class="row">
+									<label>Preferred Counseling Style</label>
+									<input type="text" class="counseling-style-input">
+								</div>
+								<div class="row">
+									<label>Additional Comments</label>
+									<textarea></textarea>
+								</div>
+								<div class="row">
+									<a href="javascript:;" class="dinnaco-btn submit-btn" 
+									data-ng-click="goToUpdateProfileDashLor()"
+									data-ng-hide="hideEditProfileBtn">SUBMIT</a>
+								</div>
+							</div>
+						</div>
+						<!-- counseling-col end -->
+					</div>
+				</div>
+				<!-- right-side-col end -->
+			</div>
+			<!-- row end -->
+		</div>
+		<!-- left-side-col end -->
+	</div>
+	<!-- dashboard-container end -->
+
+	<div data-counselor-switch-modal data-ng-show=""></div>
+	<!-- counselor-switch-modal end -->
+	<div class="bg-overlay" data-ng-show=""></div>
+</div>
+<!-- wrapper end -->
+
+
+

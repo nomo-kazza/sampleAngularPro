@@ -1,0 +1,24 @@
+{
+    "myCounselees":[
+        {
+        	"firstName": "Christopher",
+        	"lastName": "Robins",
+        	"profilePic": "i/user-pics/user_pic_01.jpg"
+        },
+        {
+        	"firstName": "Nicole",
+        	"lastName": "Gomez",
+        	"profilePic": "i/user-pics/user_pic_05.jpg"
+        },
+        {
+        	"firstName": "James",
+        	"lastName": "Robinson",
+        	"profilePic": "i/user-pics/user_pic_04.jpg"
+        },
+        {
+        	"firstName": "Jessica",
+        	"lastName": "Roberts",
+        	"profilePic": "i/user-pics/user_pic_10.jpg"
+        }
+    ]
+}

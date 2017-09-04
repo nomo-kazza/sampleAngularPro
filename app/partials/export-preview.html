@@ -1,0 +1,54 @@
+<div class="wrapper export">
+	<div data-dinnaco-header></div>
+	<!-- header end -->
+	<div class="export-container">
+		<div class="export-content container-fluid">
+			<div class="clearfix export-preview-head">
+				<p class="file-name l-left">Exportfilename.csv</p>
+				<a href="javascript:;" class="save-btn l-right" data-ng-csv="exportData" data-filename="Exportfilename.csv" data-csv-header="exportHeaders"><span class="save-icon"></span>SAVE</a>
+			</div>
+			<!-- export-preview-head end -->
+			<div class="export-preview-table-container">
+				<div class="export-preview-table" data-ng-style="tableHeight" data-adjust-table-height>
+		            <table ng-tablescroll="options">
+		                <thead>
+			                <tr>
+			                    <th class="name">Counselor Name</th>
+								<th class="name">Counselee Name</th>
+								<th class="status">Status Name</th>
+								<th class="position">Counselor Position</th>
+								<th class="position">Counselee Position</th>
+								<th class="location">Counselor Location</th>
+								<th class="location">Counselee Location</th>
+								<th class="industry">Counselor Industry</th>
+								<th class="industry">Counselee Industry</th>
+								<th class="industry">Counselee Industry1</th>
+								<th class="industry">Counselee Industry2</th>
+								<th class="industry">Counselee Industry3</th>
+			                </tr>
+		                </thead>
+		                <tbody>
+			                <tr data-ng-repeat="export in exportData">
+								<td class="name">{{export.counselorFullName}}</td>
+								<td class="name">{{export.counseleeFullName}}</td>
+								<td class="status">{{export.status}}</td>
+								<td class="position">{{export.counselorPosition}}</td>
+								<td class="position">{{export.counseleePosition}}</td>
+								<td class="location">{{export.counselorLocation}}</td>
+								<td class="location">{{export.counseleeLocation}}</td>
+								<td class="industry">{{export.counselorIndustry}}</td>
+								<td class="industry">{{export.counseleeIndustry}}</td>
+								<td class="industry">{{export.counseleeIndustry1}}</td>
+								<td class="industry">{{export.counseleeIndustry2}}</td>
+								<td class="industry">{{export.counseleeIndustry3}}</td>
+							</tr>
+		                </tbody>
+		            </table>
+		        </div>
+			</div>
+		</div>
+		<!-- export-content end -->
+	</div>
+	<!-- export-container end -->
+</div>
+<!-- wrapper end -->

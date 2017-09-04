@@ -1,0 +1,56 @@
+<div class="filters-container">
+	<div class="filters-bg" data-adjust-bg-height data-ng-style="bgHeight">
+		<div class="filters-content">
+			<a href="javascript:;" class="close-white-icon" data-ng-click="showFilter = false;"></a>
+			<p class="title">Filters</p>
+			<div class="same-city clearfix">
+				<p class="l-left">Same City</p>
+				<div class="l-right filter-checkbox">
+					<input type="checkbox" name="sameCity" id="same-city" data-ng-model="sameCity">
+					<label for="same-city"><span class="unchcked-blue-icon"></span><span class="checked-icon"></span></label>
+				</div>
+			</div>
+			<!--same-city end-->
+			<div class="same-industry same-city clearfix">
+				<p class="l-left">Same Industry</p>
+				<div class="l-right filter-checkbox">
+					<input type="checkbox" name="sameIndustry" id="same-industry" data-ng-model="sameIndustry">
+					<label for="same-industry"><span class="unchcked-blue-icon"></span><span class="checked-icon"></span></label>
+				</div>
+			</div>
+			<!--same-city end-->
+
+			<div class="filter-dropdowns-container">
+				<div class="city-dropdown filter-dropdown">
+					<div data-dropdown-select="ddSelectOptionsCity" data-dropdown-model="ddSelectSelectedCity" data-dropdown-onchange="filterCityChange(selected)"></div>
+				</div>
+				<!--city-dropdown end-->
+				<div class="level-dropdown filter-dropdown">
+					<div data-dropdown-select="ddSelectOptionsLevel" data-dropdown-model="ddSelectSelectedLevel" data-dropdown-onchange="filterLevelChange(selected)"></div>
+				</div>
+				<!--level-dropdown end-->
+				<div class="tenure-dropdown filter-dropdown">
+					<div data-dropdown-select="ddSelectOptionsTenure" data-dropdown-model="ddSelectSelectedTenure" data-dropdown-onchange="filterChange(selected)"></div>
+				</div>
+				<!--tenure-dropdown end-->
+				<div class="counselees-dropdown filter-dropdown">
+					<div data-dropdown-select="ddSelectOptionsCounselees" data-dropdown-model="ddSelectSelectedCounselees" data-dropdown-onchange="filterCounseleeChange(selected)"></div>
+				</div>
+				<!--percent-dropdown end-->
+				<div class="Percent-dropdown filter-dropdown">
+					<div data-dropdown-select="ddSelectOptionsPercent" data-dropdown-model="ddSelectSelectedPercent" data-dropdown-onchange="filterMatchesChange(selected)"></div>
+				</div>
+				<!--percent-dropdown end-->
+			</div>
+		</div>
+		<!--ffilters-content end-->
+
+		<div class="filters-bottom clearfix">
+			<a href="javascript:;" class="refresh-icon l-left" data-ng-click="resetFilter()" data-adjust-right-side-height></a>
+			<a href="javascript:;" class="dinnaco-btn apply-btn l-right" data-ng-click="applyFilter()" data-adjust-right-side-height>APPLY</a>
+		</div>
+		<!--filters-bottom end-->
+	</div>
+	<!--filters-bg end-->
+</div>
+<!--filters-container end-->

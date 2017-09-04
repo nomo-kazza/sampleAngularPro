@@ -1,0 +1,168 @@
+<div class="wrapper">
+	<div data-dinnaco-header></div>
+	<!-- header end -->
+	<div class="dashboard-container">
+		<div class="dashboard-content container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 left-side-col" data-scroll-sidebar>
+					<div class="left-side-bg">
+						<div class="user-info">
+							<div class="user-pic"><img src="i/user-pics/user_pic_16.jpg" alt="user pic"></div>
+							<p class="name">Chistina Snow</p>
+							<p class="job-position">Socail Media Consutant Dinnaco, NYC</p>
+							<div class="email"><a href="javascript:;"><span class="email-icon"></span>csnow@dinnaco.com</a></div>
+							<div class="phone"><a href="tel:1-847-555-5555"><span class="phone-icon"></span>1-847-555-5555</a></div>
+							<p class="desc">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisqu.</p>
+						</div>
+						<!-- user-info end -->
+						<a href="javascript:;" class="update-profile-btn dinnaco-btn" data-ng-click="goToUpdateProfile()">UPDATE PROFILE</a>
+					</div>
+					<!-- left-side-bg end -->
+				</div>
+				<!-- left-side-col end -->
+				<div class="col-sm-9 col-md-9 col-lg-9 right-side-col" data-ng-hide="hideGetStart">
+					<div class="getting-started">
+						<h4>Getting Started</h4>
+						<p>Hello Christina! to start the switching process,</p>
+						<p>please take a preference quiz and update your profile</p>
+						<a href="javascript:;" class="take-btn dinnaco-btn" data-ng-click="go('preference')">TAKE PREFERENCE QUIZ</a>
+					</div>
+					<!-- getting-started end -->
+					<div class="switching">
+						<h4>Opt-In to Switching Process</h4>
+						<p>Content explaining the importance of counselor switching. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+						<a href="javascript:;" class="switching-btn dinnaco-btn" data-ng-click="goToCounselorSwitchStepInfo()">INITIATE COUNSELOR SWITCHING</a>
+					</div>
+					<!-- switching end -->
+					<div class="learn-more">
+						<p>By clicking the button, you will opt-in to the switching process</p>
+						<a href="javascript:;" data-ng-click="showLearnMoreModal = true;">Learn more about switching process</a>
+					</div>
+
+				</div>
+				<!-- right-side-col end -->
+
+				<div class="col-sm-9 col-md-9 col-lg-9 right-side-col quiz-taken" data-ng-show="hideGetStart">
+					<div class="switching-learn" data-ng-hide="showViewRankMatches || showMatchingApproval || showManagerAssigned">
+						<div class="switching">
+							<h4>Opt-In to Switching Process</h4>
+							<p>Content explaining the importance of counselor switching. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+							<a href="javascript:;" class="switching-btn dinnaco-btn" data-ng-click="goToviewRankMatches()">INITIATE COUNSELOR SWITCHING</a>
+						</div>
+						<!-- switching end -->
+						<div class="learn-more">
+							<p>By clicking the button, you will opt-in to the switching process</p>
+							<a href="javascript:;" data-ng-click="showLearnMoreModal = true;">Learn more about switching process</a>
+						</div>
+					</div>
+					<!-- switching-learn end -->
+
+					<div class="view-rank-matches" data-ng-show="showViewRankMatches">
+						<h4>View and Rank Matches</h4>
+						<div class="matches-icon"></div>
+						<h5>You have 20 Matches!</h5>
+						<p>Content explaining the step process. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint.</p>
+						<a href="javascript:;" class="dinnaco-btn continue-btn" data-ng-click="go('view-sort-matches')">CONTIUNE</a>
+					</div>
+					<!-- view-rank-matches end -->
+
+					<div class="wait-matching-approval" data-ng-show="showMatchingApproval">
+						<h4>Wait for Matching Approval</h4>
+						<span class="approval-icon"></span>
+						<p class="inform">Almost complete! Now let’s sit back and relax. Set notification preference so we can inform you when when your new counselor assigned.</p>
+						<div class="inform-by">
+							<div class="inform-by-email clearfix">
+								<div class="email-label">
+									<span class="email-grey-icon"></span>
+									<span>EMAIL</span>
+								</div>
+								<div class="email-checkbox">
+									<input type="checkbox" name="email" id="emailCheck" data-ng-model="byEmail">
+									<label for="emailCheck"><span class="unchecked-icon"></span><span class="checked-icon"></span></label>
+								</div>
+							</div>
+						</div>
+						<!-- inform-by end -->
+						<div class="inform-by">
+							<div class="inform-by-sms clearfix">
+								<div class="sms-label">
+									<span class="sms-icon"></span>
+									<span>SMS</span>
+								</div>
+								<div class="sms-checkbox">
+									<input type="checkbox" name="sms" id="smsCheck" data-ng-model="bySms">
+									<label for="smsCheck"><span class="unchecked-icon"></span><span class="checked-icon"></span></label>
+								</div>
+							</div>
+						</div>
+						<!-- inform-by end -->
+					</div>
+					<!-- wait-matching-approval end -->
+
+					<div class="new-manager-assigned" data-ng-show="showManagerAssigned">
+						<p class="welcome">Welcome back, Christina!</p>
+						<p class="meet">Meet Your New Counselor</p>
+						<div class="counselor-info">
+							<div class="counselor-pic">
+			                    <div class="counselor-progress" data-counselor-progress-bar data-options="progressOptions"></div>
+								
+								<img src="i/user-pics/user_pic_21.jpg" alt="user pic" class="user-pic">
+							</div>
+							<div class="counselor-name">
+								<p class="matches-percent">63.7<span class="percent">%</span></p>
+								<p class="name">Rachel Platter</p>
+							</div>
+						</div>
+						<!-- counselor-info end -->
+						<a href="javascript:;" class="dinnaco-btn next-steps-btn">Next Steps with my New Counselor</a>
+					</div>
+					<!-- new-manager-assigned end -->
+
+					<div class="top-preferences">
+						<p class="title">Top Preferences</p>
+						<div class="row top-pref-row">
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<div class="location-icon"></div>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<div class="screen-icon"></div>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<div class="industry-icon"></div>
+							</div>
+						</div>
+						<div class="row top-pref-row">
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<p>Same City</p>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<p>Low-Touch Interaction</p>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<p>Same Industry</p>
+							</div>
+						</div>
+					</div>
+					<!-- top-preferences end -->
+				</div>
+				<!-- right-side-col end -->
+			</div>
+			<!-- row end -->
+		</div>
+		<!-- left-side-col end -->
+	</div>
+	<!-- dashboard-container end -->
+
+	<div data-counselor-switch-modal data-ng-show="showCounselorSwitchModal"></div>
+	<!-- counselor-switch-modal end -->
+	<div class="bg-overlay" 
+	data-ng-show="showCounselorSwitchModal || showLearnMoreModal"
+	data-ng-click="showCounselorSwitchModal = false; showLearnMoreModal = false;"></div>
+	<!-- wrabg-overlaypper end -->
+	<div data-learn-more-modal data-ng-show="showLearnMoreModal"></div>
+	<!-- counselor-switch-modal end -->
+</div>
+<!-- wrapper end -->
+
+
+

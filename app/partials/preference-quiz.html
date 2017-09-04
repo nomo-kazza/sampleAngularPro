@@ -1,0 +1,104 @@
+<div class="wrapper">
+	<div class="preference-quiz-bg">
+		<div data-dinnaco-header></div>
+		<!--dinnaco-header-->
+		<div class="preference-quiz-container" data-adjust-pref-height data-ng-style="pHeight">
+			<div class="preference-quiz-content">
+				<div class="preference-quiz-info" data-ng-hide="startQuiz">
+					<p class="title">Preference Quiz</p>
+					<p class="instruction">
+						You will be answering 20 questions by choosing 1 -5,
+						in scale of <span>strongly disagree</span> to <span>strongly agree</span>.</p>
+					<p class="instruction second">Please select your answer carefully since
+						it will determine the primary matching criteria.
+					</p>
+					<div class="choices">
+						<ul>
+							<li>
+								<div class="scale strongly-disagree">1</div>
+								<p>Strongly Disagree</p>
+							</li>
+							<li>
+								<div class="scale disagree">2</div>
+								<p>Disagree</p>
+							</li>
+							<li>
+								<div class="scale neutral">3</div>
+								<p>Neutral</p>
+							</li>
+							<li>
+								<div class="scale agree">4</div>
+								<p>Agree</p>
+							</li>
+							<li>
+								<div class="scale strongly-agree">5</div>
+								<p>Strongly Agree</p>
+							</li>
+						</ul>
+					</div>
+					<a href="javascript:;" class="dinnaco-btn start-btn" data-ng-click="startQuiz = true">start</a>
+				</div>
+				<!--preference-quiz-info-->
+
+				<div class="preference-quiz-questions" data-ng-show="startQuiz">
+					<div class="question">
+						<p class="question-stmt">{{currentQuestion}}</p>
+						<div class="choices">
+							<ul>
+								<li>
+									<div class="scale strongly-disagree" 
+									data-ng-click="setChoiceNum(1)" 
+									data-ng-class="isChoiceNum(1) ? 'active' : ''">1</div>
+									<p>Strongly Disagree</p>
+								</li>
+								<li>
+									<div class="scale disagree" 
+									data-ng-click="setChoiceNum(2)" 
+									data-ng-class="isChoiceNum(2) ? 'active' : ''">2</div>
+									<p>Disagree</p>
+								</li>
+								<li>
+									<div class="scale neutral" 
+									data-ng-click="setChoiceNum(3)" 
+									data-ng-class="isChoiceNum(3) ? 'active' : ''">3</div>
+									<p>Neutral</p>
+								</li>
+								<li>
+									<div class="scale agree" 
+									data-ng-click="setChoiceNum(4)" 
+									data-ng-class="isChoiceNum(4) ? 'active' : ''">4</div>
+									<p>Agree</p>
+								</li>
+								<li>
+									<div class="scale strongly-agree" 
+									data-ng-click="setChoiceNum(5)" 
+									data-ng-class="isChoiceNum(5) ? 'active' : ''">5</div>
+									<p>Strongly Agree</p>
+								</li>
+							</ul>
+						</div>
+						<div class="clearfix">
+							<a href="javascript:;" class="dinnaco-btn back-btn l-left"
+							data-ng-class="activateNext ? 'active' : ''" 
+							data-ng-click="prevQuestion()"
+							data-ng-show="currentIndex > 0">Back</a>
+
+							<a href="javascript:;" class="dinnaco-btn next-btn l-right"
+							data-ng-class="activateNext ? 'active' : ''" 
+							data-ng-click="nextQuestion()">Next</a>
+						</div>
+					</div>
+					<!--question end-->
+				</div>
+				<!--preference-quiz-questions end-->
+			</div>
+			<!--preference-quiz-content end-->
+			<div class="questions-count" data-ng-show="startQuiz">
+				<p><span class="current-question-num">{{currentIndex+1}}</span>/{{questionsLength}}</p>
+			</div>
+		</div>
+		
+	</div>
+	<!--preference-quiz-bg end-->
+</div>
+<!--wrapper end-->

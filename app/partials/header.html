@@ -1,0 +1,66 @@
+<div class="header-container" data-ng-class="isPreferencePage ? 'pref-header'  : ''">
+	<header>
+		<div class="dash-header clearfix" data-ng-show="isDashboardPage">
+			<div class="l-left title">Dashboard</div>
+			<div class="l-right">
+				<nav class="talent-nav" data-ng-show="isTalentPage">
+					<ul>
+						<li data-ng-mouseenter="showInfoMatch = true" data-ng-mouseleave="showInfoMatch = false">
+							<a href="javascript:;" data-ng-class="talentType === 'matches' ? 'active' : ''" data-ng-click="talentType = 'matches'">Matches<span>15,783</span></a>
+							<div class="hover-info" data-ng-show="showInfoMatch">
+								<p>Definition of Matches page lorem ipsum dolor sit amet consecteture amet elite adis picing set ipsum dolor.</p>
+							</div>
+						</li>
+						<li data-ng-mouseenter="showInfoAvailable = true" data-ng-mouseleave="showInfoAvailable = false">
+							<a href="javascript:;" data-ng-class="talentType === 'available' ? 'active' : ''" data-ng-click="talentType = 'available'">Available<span>125</span></a>
+							<div class="hover-info" data-ng-show="showInfoAvailable">
+								<p>Definition of Available page lorem ipsum dolor sit amet consecteture amet elite adis picing set ipsum dolor.</p>
+							</div>
+						</li>
+						<li data-ng-mouseenter="showInfoOut = true" data-ng-mouseleave="showInfoOut = false">
+							<a href="javascript:;" data-ng-class="talentType === 'outstanding' ? 'active' : ''" data-ng-click="talentType = 'outstanding'">Outstanding<span>97</span></a>
+							<div class="hover-info" data-ng-show="showInfoOut">
+								<p>Definition of Outstanding page lorem ipsum dolor sit amet consecteture amet elite adis picing set ipsum dolor.</p>
+							</div>
+						</li>
+						<li data-ng-mouseenter="showInfoPending = true" data-ng-mouseleave="showInfoPending = false">
+							<a href="javascript:;" data-ng-class="talentType === 'pending' ? 'active' : ''" data-ng-click="talentType = 'pending'">Pending<span>10</span></a>
+							<div class="hover-info" data-ng-show="showInfoPending">
+								<p>Definition of Pending page lorem ipsum dolor sit amet consecteture amet elite adis picing set ipsum dolor.</p>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			<div class="l-right help"><a href="javascript:;"><span class="help-icon"></span>Help</a></div>
+			</div>
+		</div>
+		<!--dash-header end-->
+		<div class="dash-header clearfix" data-ng-show="isPreferencePage">
+			<div class="l-left title preference"><span class="preference-icon"></span>Preference Quiz</div>
+			<div class="l-right quest-progress clearfix" data-ng-show="startQuiz">
+				<span class="completed l-left" data-ng-show="progress"><span>{{progress}}</span>% Completed</span>
+				<div class="progress-bar"><span class="completed-progress" data-ng-style="progressStyle"></span></div>
+			</div>
+		</div>
+		<!--Preference dash-header end-->
+		<div class="dash-header clearfix" data-ng-show="isProfilePage">
+			<div class="l-left title profile"><span class="user-icon"></span>Update Profile</div>
+		</div>
+		<!--Update Profile dash-header end-->
+		<div class="dash-header clearfix" data-ng-show="isViewSortPage">
+			<div class="l-left title matches"><span class="matches-white-icon"></span>View & Sort Matches</div>
+		</div>
+		<!--View & Sort Matches dash-header end-->
+		<div class="dash-header clearfix" data-ng-show="isExportPage">
+			<div class="l-left title export"><span class="export-white-icon"></span>Export Preview</div>
+			<a href="javascript:;" class="l-right back-to" data-ng-click="go('dashboard-talent')">Back to Dashboard</a>
+		</div>
+		<!--Export Preview dash-header end-->
+		<div class="dash-header clearfix" data-ng-show="isReviewRequestPage">
+			<div class="l-left title export"><span class="review-icon"></span>Review Requests</div>
+		</div>
+		<!--dash-header end-->
+	</header>
+	<!--header end-->
+</div>
+<!--header-container end-->

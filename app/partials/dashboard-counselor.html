@@ -1,0 +1,116 @@
+<div class="wrapper">
+	<div data-dinnaco-header></div>
+	<!-- header end -->
+	<div class="dashboard-container">
+		<div class="dashboard-content container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 left-side-col" data-scroll-sidebar>
+					<div class="left-side-bg">
+						<div class="user-info">
+							<div class="user-pic"><img src="i/user-pics/user_pic_16.jpg" alt="user pic"></div>
+							<p class="name">Chistina Snow</p>
+							<p class="job-position">Socail Media Consutant Dinnaco, NYC</p>
+							<div class="email"><a href="javascript:;"><span class="email-icon"></span>csnow@dinnaco.com</a></div>
+							<div class="phone"><a href="tel:1-847-555-5555"><span class="phone-icon"></span>1-847-555-5555</a></div>
+							<p class="desc">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisqu.</p>
+						</div>
+						<!-- user-info end -->
+						<a href="javascript:;" class="update-profile-btn dinnaco-btn" data-ng-click="goToUpdateProfileLor()">UPDATE PROFILE</a>
+					</div>
+					<!-- left-side-bg end -->
+				</div>
+				<!-- left-side-col end -->
+
+				<div class="col-sm-9 col-md-9 col-lg-9 right-side-col quiz-taken">
+					<div class="my-counselees-container">
+						<div class="row">
+							<div class="col-sm-7 col-md-7 col-lg-7 my-counselees-col">
+								<div class="couselees-progrss">
+									<div class="round-progress-bar">
+	                                    <div data-round-progress
+	                                        data-max="maxCounselee"
+	                                        data-current="currentCounselee"
+	                                        data-color="#00a1de"
+	                                        data-bgcolor="#dcdcdc"
+	                                        data-radius="82"
+	                                        data-stroke="15"
+	                                        data-semi="false"
+	                                        data-rounded="false"
+	                                        data-clockwise="true"
+	                                        data-responsive="false"
+	                                        data-duration="500"
+	                                        data-animation="linearEase"
+	                                        data-animation-delay="0">
+	                                    </div>
+	                                </div>
+	                                <!--round-progress-bar end-->
+	                                <div class="curent-counselee"><span>{{currentCounselee}}</span>/<span>{{maxCounselee}}</span></div>
+								</div>
+								<!--couselees-progrss end-->
+								<p class="title">My Counselees</p>
+								<div class="counselees-list">
+									<ul class="clearfix">
+										<li data-ng-repeat="counselee in myCounselees" data-ng-class="myCounselees.length === 5 ? 'new-counselee' : ''">
+											<img data-ng-src="{{counselee.profilePic}}" alt="user pic" src="javascript:;">
+											<p class="first-name">{{counselee.firstName}}</p>
+											<p>{{counselee.lastName}}</p>	
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-5 col-md-5 col-lg-5 request-col">
+								<span class="counselee-icon"></span>
+								<p>You have <span>20</span></p>
+								<p class="requests">Counselee Requests</p>
+								<a href="javascript:;" class="dinnaco-btn review-btn" 
+								data-ng-click="go('review-requests')"
+								data-ng-class="myCounselees.length === 5 ? 'new-counselee' : ''">REVIEW</a>
+							</div>
+						</div>
+						
+					</div>
+
+					<div class="top-preferences counselor">
+						<p class="title">Top Preferences</p>
+						<div class="row top-pref-row">
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<div class="location-icon"></div>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<div class="screen-icon"></div>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<div class="industry-icon"></div>
+							</div>
+						</div>
+						<div class="row top-pref-row">
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<p>Same City</p>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<p>Low-Touch Interaction</p>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 align-center">
+								<p>Same Industry</p>
+							</div>
+						</div>
+						<a href="javascript:;" class="take-btn dinnaco-btn" data-ng-click="go('preference')">TAKE PREFERENCE QUIZ</a>
+					</div>
+					<!-- top-preferences end -->
+				</div>
+				<!-- right-side-col end -->
+			</div>
+			<!-- row end -->
+		</div>
+		<!-- left-side-col end -->
+	</div>
+	<!-- dashboard-container end -->
+
+	<div data-new-counselee data-ng-show="showNewCounseleeApp" class="new-counselee-modal"></div>
+	<!-- counselor-switch-modal end -->
+	<div class="bg-overlay" data-ng-show="showNewCounseleeApp" data-ng-click="showNewCounseleeApp = false"></div>
+</div>
+<!-- wrapper end -->
+
+
+

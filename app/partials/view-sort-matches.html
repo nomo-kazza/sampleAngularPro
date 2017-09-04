@@ -1,0 +1,229 @@
+<div class="wrapper">
+	<div data-dinnaco-header></div>
+	<!-- header end -->
+	<div class="view-sort-container">
+		<div class="view-sort-content container-fluid">
+			<div class="row view-sort-row">
+				<div class="col-sm-9 col-md-9 col-lg-9 view-left-side-col" data-ng-class="showFilter ? 'filter' : ''">
+					<div class="view-sort-head">
+						<div class="row matches-row">
+							<div class="matches display-inline view-sort">
+								<span>
+									{{(matchesData | 
+									filter:searchKey | 
+									dinnacoCityFilter:filterCity | 
+									dinnacoLevelFilter:filterLevel | 
+									dinnacoCounseleeFilter:filterCounselee1:filterCounselee2 | dinnacoMatchesFilter:filterMatches:filterMatchesSign).length}}
+								</span> Matches</div>
+							<!-- matches end -->
+							<div class="sort-display display-inline">
+								<div class="sort-dropdown display-inline">
+									<span class="sort-by">Sort by </span>
+									<div data-dropdown-select="ddSelectOptionsMatches" data-dropdown-model="ddSelectSelectedMatches" data-dropdown-onchange="sortChange(selected)"></div>
+								</div>
+								<div class="display-dropdown display-inline">
+									<div data-dropdown-select="ddSelectOptionsDisplay" data-dropdown-model="ddSelectSelectedDisplay" data-dropdown-onchange="displayChange(selected)"></div>
+								</div>
+							</div>
+							<!-- sort-display end -->
+							<div class="search-box display-inline"><span class="search-icon"></span><input type="search" placeholder="Name, location, or industry..." data-ng-model="searchKey"></div>
+							<!-- search-box end -->
+							<div class="filter-btns display-inline">
+								<a href="javascript:;" class="list-view-icon" 
+									data-ng-class="{active: layout === 'list'}" 
+									data-ng-click="layout = 'list';"
+									data-adjust-right-side-height>
+								</a>
+								<a href="javascript:;" class="grid-view-icon"
+									data-ng-class="{active: layout === 'grid'}" 
+									data-ng-click="layout = 'grid';"
+									data-adjust-right-side-height>
+								</a>
+								<span class="separater"></span>
+								<a href="javascript:;" class="filter-icon" 
+									data-ng-click="showFilter = !showFilter"
+									data-ng-class="{active: showFilter}">
+								</a>
+							</div>
+							<!-- filter-btns end -->
+						</div>
+						<!-- matches-row end -->
+
+						<div class="row in-your-row">
+							<div class="office"><span class="location-green-icon"></span>10 are in your prefered office</div>
+							<div class="industry"><span class="bag-green-icon"></span>10 work in your industry</div>
+						</div>
+						<!-- in-your-row end -->
+						<div class="row star-row">
+							<div class="click-star"><span class="star-grey-icon"></span>Click at star icon to add counselor as your top selection.</div>
+						</div>
+						<!-- star-row end -->
+					</div>
+					<!-- view-sort-head end -->
+
+					<div class="list-view" data-ng-show="layout == 'list'">
+						<div class="view-sort-table-container dinnaco-table">
+							<table>
+								<thead>
+									<tr>
+										<th></th>
+										<th>
+											<a href="javascript:;" data-ng-click="sortType = 'fullName'; sortReverse = !sortReverse">COUNSELOR</a>
+										</th>
+										<th>
+											<a href="javascript:;" data-ng-click="sortType = 'city'; sortReverse = !sortReverse">LOCATION</a>
+										</th>
+										<th>
+											<a href="javascript:;" data-ng-click="sortType = 'industry'; sortReverse = !sortReverse">INDUSTRY</a>
+										</th>
+										<th>COUNSELEE</th>
+										<th>
+											<a href="javascript:;" data-ng-click="sortType = 'percent'; sortReverse = !sortReverse">MATCHES</a>
+										</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-dir-paginate="match in matchesData | orderBy:sortType:sortReverse | 
+									filter:searchKey | dinnacoCityFilter:filterCity | 
+									dinnacoLevelFilter:filterLevel | 
+									dinnacoCounseleeFilter:filterCounselee1:filterCounselee2 | dinnacoMatchesFilter:filterMatches:filterMatchesSign | 
+									itemsPerPage: pageSize">
+										<td>
+											<a href="javascript:;" class="star-grey-icon" 
+												data-ng-click="addCounselor(match)"
+												data-ng-class="match.selected ? 'orange' : ''">
+											</a>
+											<img class="user-pic" data-ng-src="{{match.counselorPicSrc}}" alt="user-pic" src="javascript:;">
+										</td>
+										<td>
+											<p class="full-name">{{match.fullName}}</p>
+											<p class="position">{{match.position}}</p>
+										</td>
+										<td>
+											<p class="city">{{match.city}}</p>
+											<p class="state">{{match.state}}</p>
+										</td>
+										<td>
+											<p>{{match.industry}}</p>
+										</td>
+										<td>{{match.counselee}}</td>
+										<td><p class="matches-percent">{{match.percent}}<span class="percent">%</span></p></td>
+										<td><a href="javascript:;" class="dinnaco-btn profile-btn" data-ng-click="goProfileCounselee()">PROFILE</a></td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- table end -->
+						</div>
+						<!-- view-sort-table-container end -->
+					</div>
+					<!-- list-view end -->
+
+					<div class="gird-view" data-ng-show="layout == 'grid'">
+						<div class="gird-list-container dinnaco-grid">
+							<ul class="clearfix">
+								<li data-dir-paginate="match in matchesData | orderBy:sortType:sortReverse | 
+									filter:searchKey | dinnacoCityFilter:filterCity | 
+									dinnacoLevelFilter:filterLevel | 
+									dinnacoCounseleeFilter:filterCounselee1:filterCounselee2 | dinnacoMatchesFilter:filterMatches:filterMatchesSign | 
+									itemsPerPage: pageSize">
+									<div class="grid-card">
+										<a href="javascript:;" class="star-grey-icon"
+											data-ng-click="addCounselor(match)"
+											data-ng-class="match.selected ? 'orange' : ''">
+										</a>
+										<p class="matches-percent">{{percentage(match.percent)}}<span class="percent">%</span></p>
+										<div class="user-progress">
+											<div class="round-progress-bar">
+			                                    <div data-round-progress
+			                                        data-max="max"
+			                                        data-current="match.percent"
+			                                        data-color="url(#gradientColor1)"
+			                                        data-bgcolor="#dcdcdc"
+			                                        data-radius="45"
+			                                        data-stroke="5"
+			                                        data-semi="false"
+			                                        data-rounded="false"
+			                                        data-clockwise="true"
+			                                        data-responsive="false"
+			                                        data-duration="500"
+			                                        data-animation="linearEase"
+			                                        data-animation-delay="0">
+			                                        <svg>
+			                                            <linearGradient id="gradientColor1" x1="1" x2="0" y1="0" y2="1">
+			                                                <stop offset="5%"  stop-color="rgb(129,188,0)"/>
+			                                                <stop offset="95%" stop-color="rgb(60,138,46)"/>
+			                                            </linearGradient>
+			                                        </svg>
+			                                    </div>
+			                                </div>
+			                                <img class="user-pic" data-ng-src="{{match.counselorPicSrc}}" alt="user-pic" src="javascript:;">
+										</div>
+										<!--user-progress end-->
+										<p class="full-name">{{match.fullName}}</p>
+										<p class="position">{{match.position}}</p>
+										<p class="city-state"><span class="city">{{match.city}}, </span><span class="state">{{match.state}}</span></p>
+										<p class="industry">{{match.industry}}</p>
+										<p class="counselee"><span>{{match.counselee}}</span> Counselees</p>
+										<a href="javascript:;" class="dinnaco-btn profile-btn" data-ng-click="goProfileCounselee()">VIEW PROFILE</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!-- gird-list-container end -->
+					</div>
+					<!-- gird-view end -->
+					<div class="clearfix">
+						<div class="l-right page-controls" data-ng-class="layout === 'grid' ? 'grid' : ''">
+							<div data-dir-pagination-controls data-direction-links="false" data-boundary-links="false" data-on-page-change="pageChangeHandler(newPageNumber)" data-template-url="partials/dirPagination.tpl.html"></div>
+						</div>
+					</div>
+					<!-- page-controls end -->
+					<div class="filters" 
+						data-filters 
+						data-ng-show="showFilter">
+					</div>
+					<!-- filters end -->
+				</div>
+				<!-- view-left-side-col end -->
+				
+				<div class="col-sm-3 col-md-3 col-lg-3 view-right-side-col">
+					<div class="right-side-bg" data-adjust-bg-height data-ng-style="bgHeight">
+						<p class="rank-instruct" data-ng-hide="showCounsleorList">Up to 5 top preference counselors can be selected and ranked.</p>
+						<div class="counselor-selection" data-ng-show="showCounsleorList">
+							<p class="title">Top Counselor Selections</p>
+							<ul class="selected-counselors">
+								<li data-ng-repeat="selected in selectedCounselor">
+									<span class="num">{{$index+1}}</span>
+									<div class="counselor-info">
+										<img data-ng-src="{{selected.counselorPicSrc}}" alt="user pic" class="user-pic" src="javascript:;">
+										<p class="full-name">{{selected.fullName}}</p>
+										<p class="position">{{selected.position}}</p>	
+									</div>
+
+									<a href="javascript:;" class="down-arrow-grey-icon" 
+									data-ng-hide="$index === selectedCounselor.length-1"
+									data-ng-click="rankCounselor($index, 'down')"></a>
+
+									<a href="javascript:;" class="up-arrow-grey-icon" 
+									data-ng-hide="$index === 0"
+									data-ng-click="rankCounselor($index, 'up')"></a>
+								</li>
+							</ul>
+							<p class="note">Please note that there is no guarantee that the top selections will be the final matched counselor due to capacity constraints or counselor selection.</p>
+							<a href="javascript:;" class="dinnaco-btn submit-btn" data-ng-click="goToMatchingApproval()">SUBMIT</a>
+						</div>
+						<!-- counselor-selection end -->
+						
+					</div>
+					<!-- right-side-bg end -->
+				</div>
+				<!-- view-right-side-col end -->
+			</div>
+			<!-- row end -->
+		</div>
+		<!-- view-sort-content end -->
+	</div>
+	<!-- view-sort-container end -->
+</div>
+<!-- wrapper end -->

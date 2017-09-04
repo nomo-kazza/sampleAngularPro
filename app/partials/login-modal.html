@@ -1,0 +1,34 @@
+<div class="login-modal">
+	<a href="javascript:;" class="close-grey-icon" data-ng-click="showLoginModal = false; useCredentials = false; credentilas = false"></a>
+	<div class="login-modal-content">
+		<div class="login-radio">
+			<div><input type='radio' name="loginRadio" id="loginSso" data-ng-click="loginCounselee()"><label for="loginSso">Login using SSO</label></div>
+			<div><input type='radio' name="loginRadio" id="loginCredentials" data-ng-click="useCredentials = true" data-ng-model="credentilas"><label for="loginCredentials">Login using your credentials</label></div>
+		</div>
+		<form class="login-form" name="loginForm" data-ng-show="useCredentials">
+			<div class="username">
+				<input type="email" name="username" placeholder="Email" 
+				data-ng-model="username"
+				data-ng-class="invalidUsername ? 'has-error' : ''"
+				data-ng-focus="invalidUsername = false;" required>
+			</div>
+			<!--login-username end-->
+			<div class="password">
+				<input type="password" name="password" placeholder="Password" 
+				data-ng-model="password"
+				data-ng-class="invalidPass ? 'has-error' : ''"
+				data-ng-focus="invalidPass = false;" required>
+			</div>
+			<!--login-password end-->
+			<div class="clearfix">
+				<a href="javascript:;" class="cancel-btn dinnaco-btn l-left" data-ng-click="showLoginModal = false; useCredentials = false; credentilas = false">Cancel</a>
+				<a href="javascript:;" class="login-m-btn dinnaco-btn l-right"
+				data-ng-click="checkLogin(!loginForm.password.$error.required, !loginForm.username.$error.required, loginForm.username.$valid)">Login</a>
+			</div>
+			<!--login-btns end-->
+		</form>
+		<!--login-modal-content end-->
+	</div>
+	<!--login-modal end-->
+</div>
+<!--login-modal end-->

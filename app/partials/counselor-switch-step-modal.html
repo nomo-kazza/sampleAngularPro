@@ -1,0 +1,47 @@
+<div class="counselor-switch-modal" data-ng-class="isEnoughHeight ? 'not-enough-height' : ''" data-step-modal-height>
+	<a href="javascript:;" class="close-grey-icon" data-ng-click="showCounselorSwitchModal = false"></a>
+	<p>Counselor Switching Process</p>
+	<div class="counselor-switch-steps">
+		<ul>
+			<li>
+				<span class="step-icon preference-grey-icon"></span>
+				<div class="step-type">
+					<a href="javascript:;" class="step-name" data-ng-click="go('preference')">Take Preference Quiz</a>
+					<p class="desc">Short description on a step corrupti quos dolores et quas molestias excepturi.</p>
+				</div>
+			</li>
+			<li>
+				<span class="step-icon profile-grey-icon"></span>
+				<div class="step-type">
+					<a href="javascript:;" class="step-name" data-ng-click="go('update-profile')">Update your Profile</a>
+					<p class="desc">Short description on a step corrupti quos dolores et quas molestia.</p>
+				</div>
+			</li>
+			<li>
+				<span class="step-icon switching-grey-icon"></span>
+				<div class="step-type">
+					<a href="javascript:;" class="step-name" data-ng-click="goToOptINSwicthing()">Opt-In to Switching Process</a>
+					<p class="desc">Short description on a step corrupti quos dolores et quas molestia.</p>
+				</div>
+			</li>
+			<li>
+				<span class="step-icon matches-grey-icon"></span>
+				<div class="step-type">
+					<a href="javascript:;" class="step-name" data-ng-click="goToViewRankMatches()">View and Rank Matches</a>
+					<p class="desc">Short description on a step corrupti quos dolores et quas molestia.</p>
+				</div>
+			</li>
+			<li>
+				<span class="step-icon approval-grey-icon"></span>
+				<div class="step-type">
+					<a href="javascript:;" class="step-name" data-ng-click="goToWaitApproval()">Wait for Matching Approvals</a>
+					<p class="desc">Short description on a step corrupti quos dolores et quas molestia.</p>
+				</div>
+			</li>
+		</ul>
+		<!--ul end-->
+	</div>
+	<!--counselor-switch-steps end-->
+	<a href="javascript:;" class="dinnaco-btn done-btn" data-ng-click="showCounselorSwitchModal = false">DONE</a>
+</div>
+<!--counselor-switch-modal end-->
